@@ -22,7 +22,7 @@ export default function Sessoes() {
 
 
     function add() {
-        console.log(pullsession[0])
+        
 
         setrenderiza(renderiza[0] = pullsession[0].days.map((ref, index) => {
             let ren = ref.showtimes.map((refe, i) => { return <Link key={i} to={`/assentos/${refe.id}`} ><div className='sessions'>{refe.name}</div></Link> }); return (
@@ -62,7 +62,7 @@ console.log(pullsession)
                     {renderiza}
                 </div>
 
-                <MovieSelected title={pullsession.title} img={pullsession.posterURL}/>
+                <MovieSelected title={pullsession.title} img={pullsession.posterURL} hora={""} dia ={""}/>
             </>
 
 

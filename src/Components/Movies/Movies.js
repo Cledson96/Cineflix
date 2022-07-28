@@ -8,8 +8,8 @@ export default function Movies({ data }) {
     return (
         <>
             <Tittle title={"Selecione o filme"}  />
-            <ul >
-                {data.map((ref, index) => { return <li><Link key={index} to={`/sessoes/${ref.id}`} ><img alt={ref.title} src={ref.posterURL} /> </Link></li> })}
+            <ul className='catalogo' >
+                {data.map((ref, index) => { return <li className='li'> <Link key={index} to={`/sessoes/${ref.id}`} ><img alt={ref.title} src={ref.posterURL} /> </Link></li> })}
             </ul>
         </>
 

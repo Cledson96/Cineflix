@@ -3,10 +3,16 @@
 }
 
 .Disponivel,
-.Indisponivel {
+.Indisponivel,
+.selecionado {
     width: 26px;
     height: 26px;
     border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 7px;
+    margin-bottom: 7px;
 }
 
 .Indisponivel {
@@ -44,6 +50,10 @@ h2 {
 
 .ListaAssentos {
     padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style-type: none;
 }
 
 .Status {
@@ -51,7 +61,8 @@ h2 {
     justify-content: center;
     display: flex;
     width: 100%;
-    height: 100px;
+    height: 65px;
+    margin-bottom: 5px;
 }
 
 
@@ -65,7 +76,7 @@ h3 {
     align-items: center;
     letter-spacing: -0.013em;
     color: #4E5A65;
-
+    margin: 0;
 
 }
 
@@ -89,7 +100,7 @@ h4 {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 21px;
     align-items: center;
     color: #293845;
@@ -99,7 +110,7 @@ h4 {
 
 input {
     width: 327px;
-    height: 51px;
+    height: 45px;
     background: #FFFFFF;
     border: 1px solid #D5D5D5;
     border-radius: 3px;
@@ -132,5 +143,13 @@ input {
     background: #E8833A;
     border-radius: 5px;
     border-width: 0;
-    margin-top: 57px;
+    margin-top: 25px;
+}
+
+.content {
+    padding-left: 24px;
+    padding-right: 24px;
+    margin-bottom: 120px;
+    overflow: hidden;
+    overflow-y: scroll;
 }

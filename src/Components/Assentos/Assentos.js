@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 import Tittle from '../Tittle/Tittle'
 import { Link } from "react-router-dom"
+import MovieSelected from '../MovieSelected/MovieSelected';
 
 export default function Assentos() {
     const params = useParams();
@@ -42,7 +43,7 @@ export default function Assentos() {
         )
         )
     }
-    console.log(renderiza)
+    console.log(pullassents)
 
 
 
@@ -56,32 +57,37 @@ export default function Assentos() {
             :
             <>
                 <Tittle title={"Selecione o(s) assento(s)"} />
-                <ul className='ListaAssentos'>
-                    {renderiza}
-                </ul>
-                <div className='Status'>
-                    <div className='select' >
-                        <div className='selecionado'></div>
-                        <h3>Selecionado</h3>
+                <div className='content'>
+                    <ul className='ListaAssentos'>
+                        {renderiza}
+                    </ul>
+                    <div className='Status'>
+                        <div className='select' >
+                            <div className='selecionado'></div>
+                            <h3>Selecionado</h3>
+                        </div>
+                        <div className='select'>
+                            <div className='Disponivel'></div>
+                            <h3>Disponivel</h3>
+                        </div>
+                        <div className='select'>
+                            <div className='Indisponivel'></div>
+                            <h3>Indisponivel</h3>
+                        </div>
+
+
                     </div>
-                    <div className='select'>
-                        <div className='Disponivel'></div>
-                        <h3>Disponivel</h3>
+                    <div className='Informacoescompra'>
+                        <h4>Nome do comprador:</h4>
+                        <input className='comprador' placeholder='Digite seu nome...'></input>
+                        <h4>CPF do comprador:</h4>
+                        <input className='comprador' placeholder='Digite seu CPF...'></input>
                     </div>
-                    <div className='select'>
-                        <div className='Indisponivel'></div>
-                        <h3>Indisponivel</h3>
-                    </div>
-                   
-                   
+                    <button className='buttonReserva'>Reservar assento(s)</button>
+
                 </div>
-                <div className='Informacoescompra'>
-                    <h4>Nome do comprador:</h4>
-                    <input className='comprador' placeholder='Digite seu nome...'></input>
-                    <h4>CPF do comprador:</h4>
-                    <input className='comprador' placeholder='Digite seu CPF...'></input>
-                </div>
-                <button className='buttonReserva'>Reservar assento(s)</button>
+
+                <MovieSelected title={pullassents.movie.title} img={pullassents.movie.posterURL} horario={pullassents.name } dia={pullassents.day.weekday + "  -"} />
             </>
     )
 
