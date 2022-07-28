@@ -8,7 +8,7 @@ export default function Movies({ data }) {
         <>
             <Tittle title={"Selecione o filme"}  />
             <ul >
-                {data.map((ref, index) => { return <Link key={index} to={`/sessoes/${ref.id}`} ><li><img alt={ref.title} src={ref.posterURL} /> </li> </Link>})}
+                {data.map((ref, index) => { return <li><Link key={index} to={`/sessoes/${ref.id}`} ><img alt={ref.title} src={ref.posterURL} /> </Link></li> })}
             </ul>
         </>
 

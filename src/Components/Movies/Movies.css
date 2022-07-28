@@ -28,4 +28,9 @@ ul {
     flex-wrap: wrap;
     width: 100%;
     justify-content: center;
+    max-width: 1100px;
+   
+}
+a {
+    z-index: 100;
 }
