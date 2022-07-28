@@ -1,7 +1,7 @@
 import './Tittle.css'
 
-export default function Tittle () {
+export default function Tittle ({title}) {
     return (
-        <h1>Selecione o filme</h1>
+        <h1>{title}</h1>
     )
 }

@@ -1,0 +1,50 @@
+.days {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    padding-left: 24px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    align-items: center;
+    letter-spacing: 0.02em;
+    color: #293845;
+    margin-bottom: 22px;
+
+}
+a {
+    text-decoration: none;
+}
+
+body {
+    margin: 0;
+
+}
+.Hours{
+    padding-left: 24px;
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+}
+.sessions{
+    margin-right: 9px;
+    margin-bottom: 23px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 83px;
+    height: 43px;
+    border-radius: 5px;
+    background: #E8833A;
+    color:white
+    
+}
+.caixa{
+    width: 100%;
+   
+}
+h1{
+    margin-bottom: 30px;
+}

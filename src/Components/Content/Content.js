@@ -1,13 +1,19 @@
 import './Content.css'
-import Tittle from '../Tittle/Tittle'
 import Movies from '../Movies/Movies'
+import Sessoes from '../Sessoes/sessoes';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-export default function Content() {
+export default function Content({ data }) {
     return (
-        <>
-            <Tittle />
-            <Movies />
-        </>
+
+        <BrowserRouter>
+            
+            <Routes>
+                <Route path='/' element={<Movies data={data} />} />
+                <Route path="/sessoes/:IDmovies" element={ <Sessoes />} />
+            </Routes>
+
+        </BrowserRouter>
 
     )
 }

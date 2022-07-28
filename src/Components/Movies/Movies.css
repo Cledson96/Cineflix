@@ -1,0 +1,31 @@
+li {
+    margin-left: 30px;
+    width: 145px;
+    height: 209px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    margin-top: 11px;
+    z-index: 80;
+}
+
+li:hover {
+    cursor: pointer;
+    filter: brightness(190%);
+}
+
+li img {
+    width: 129px;
+    height: 193px;
+    background-color: aqua;
+
+}
+
+ul {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+}
