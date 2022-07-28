@@ -4,28 +4,29 @@ import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 import Tittle from '../Tittle/Tittle'
 import { Link } from "react-router-dom"
+import MovieSelected from '../MovieSelected/MovieSelected';
 
 
 export default function Sessoes() {
-  
+
     const params = useParams();
     const [pullsession, setpullsession] = useState([]);
-    const [renderiza, setrenderiza ] = useState([]);
+    const [renderiza, setrenderiza] = useState([]);
 
     useEffect(() => {
         const request = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${params.IDmovies}/showtimes`);
 
         request.then((answer) => { setpullsession(pullsession[0] = (answer.data)); add() })
-    },[]);
+    }, []);
 
-    
+
 
     function add() {
-        console.log(pullsession[0].days)
+        console.log(pullsession[0])
 
         setrenderiza(renderiza[0] = pullsession[0].days.map((ref, index) => {
-            let ren = ref.showtimes.map((refe,i) => {return  <Link key = {i} to={`/assentos/${refe.id}`} ><div className='sessions'>{refe.name}</div></Link>}) ; return (
-                <div key = {index} className="caixa">
+            let ren = ref.showtimes.map((refe, i) => { return <Link key={i} to={`/assentos/${refe.id}`} ><div className='sessions'>{refe.name}</div></Link> }); return (
+                <div key={index} className="caixa">
                     <div className="days" >{ref.weekday} - {ref.date}</div>
                     <div className='Hours'>{ren}</div>
                 </div>
@@ -45,7 +46,7 @@ export default function Sessoes() {
 
 
 
-
+console.log(pullsession)
 
     return (
 
@@ -57,7 +58,11 @@ export default function Sessoes() {
             :
             <>
                 <Tittle title={"Selecione o horário"} />
-                {renderiza}
+                <div className='horarios'>
+                    {renderiza}
+                </div>
+
+                <MovieSelected title={pullsession.title} img={pullsession.posterURL}/>
             </>
 
 

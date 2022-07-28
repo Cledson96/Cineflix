@@ -14,6 +14,7 @@
     margin-bottom: 22px;
 
 }
+
 a {
     text-decoration: none;
 }
@@ -22,13 +23,15 @@ body {
     margin: 0;
 
 }
-.Hours{
+
+.Hours {
     padding-left: 24px;
     display: flex;
     width: 100%;
     align-items: flex-start;
 }
-.sessions{
+
+.sessions {
     margin-right: 9px;
     margin-bottom: 23px;
     display: flex;
@@ -38,13 +41,28 @@ body {
     height: 43px;
     border-radius: 5px;
     background: #E8833A;
-    color:white
-    
+    color: white
 }
-.caixa{
-    width: 100%;
-   
+
+.caixa {
+    width: 350px;
+
 }
-h1{
+
+h1 {
     margin-bottom: 30px;
+}
+
+.horarios {
+    padding-top: 20px;
+   
+    display: flex;
+ 
+    margin-bottom: 117px;
+    justify-content: center;
+    max-width: 350px;
+    overflow-y: scroll;
+    flex-wrap: wrap;
+    overflow-x: hidden;
+    overflow-y: visible;
 }
