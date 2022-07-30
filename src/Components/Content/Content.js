@@ -7,7 +7,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from 'react';
 
 export default function Content({ data }) {
-    const [envio,setenvio] = useState([])
+    const [envio,setenvio] = useState([]);
+    const [selecionados, setselecionados] = useState([]);
+
+
     return (
 
         <BrowserRouter>
@@ -15,8 +18,8 @@ export default function Content({ data }) {
             <Routes>
                 <Route path='/' element={<Movies data={data} />} />
                 <Route path="/sessoes/:IDmovies" element={ <Sessoes />} />
-                <Route path="/assentos/:IDassentos" element={ <Assentos envio={envio} setenvio={setenvio}/>} />
-                <Route path="/sucesso" element={ <Sucesso envio={envio} setenvio={setenvio}/>} />
+                <Route path="/assentos/:IDassentos" element={ <Assentos selecionados={selecionados} setselecionados={setselecionados} envio={envio} setenvio={setenvio}/>} />
+                <Route path="/sucesso" element={ <Sucesso  envio={envio} setenvio={setenvio}/>} />
 
             </Routes>
 
