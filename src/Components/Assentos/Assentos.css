@@ -24,6 +24,13 @@
     background-color: #C3CFD9;
     border: 1px solid #808F9D;
 }
+.selecionado {
+    width: 26px;
+    height: 26px;
+    background-color: #8DD7CF;
+    border: 1px solid #1AAE9E;
+    border-radius: 50%;
+}
 
 .Indisponivel:hover {
     filter: brightness(150%);
@@ -88,13 +95,7 @@ h3 {
     margin-right: 15px;
 }
 
-.selecionado {
-    width: 26px;
-    height: 26px;
-    background: #8DD7CF;
-    border: 1px solid #1AAE9E;
-    border-radius: 50%;
-}
+
 
 h4 {
     font-family: 'Roboto';
@@ -127,7 +128,9 @@ input {
     margin-top: 2px;
 
 }
-
+li {
+    z-index: 100;
+}
 .buttonReserva {
     font-family: 'Roboto';
     font-style: normal;

@@ -14,7 +14,7 @@ export default function Sessoes() {
     const [renderiza, setrenderiza] = useState([]);
 
     useEffect(() => {
-        const request = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${params.IDmovies}/showtimes`);
+        const request = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/movies/${params.IDmovies}/showtimes`);
 
         request.then((answer) => { setpullsession(pullsession[0] = (answer.data)); add() })
     }, []);
