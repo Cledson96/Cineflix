@@ -6,26 +6,22 @@ import Tittle from '../Tittle/Tittle'
 import { Link } from "react-router-dom"
 import MovieSelected from '../MovieSelected/MovieSelected';
 
-
-export default function Sessoes() {
-
+export default function Sessoes({ setpagina,setselecionados }) {
+    
     const params = useParams();
     const [pullsession, setpullsession] = useState([]);
     const [renderiza, setrenderiza] = useState([]);
 
     useEffect(() => {
+        setpagina("/")
+        setselecionados([])
         const request = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/movies/${params.IDmovies}/showtimes`);
-
         request.then((answer) => { setpullsession(pullsession[0] = (answer.data)); add() })
-    }, []);
-
-
+    }, [params.IDmovies]);
 
     function add() {
-        
-
         setrenderiza(renderiza[0] = pullsession[0].days.map((ref, index) => {
-            let ren = ref.showtimes.map((refe, i) => { return <Link key={i} to={`/assentos/${refe.id}`} ><div className='sessions'>{refe.name}</div></Link> }); return (
+            let ren = ref.showtimes.map((refe, i) => { return <Link key={i} onClick={() => setpagina([`sessoes/${params.IDmovies}`])}  to={`/assentos/${refe.id}`} ><div className='sessions'>{refe.name}</div></Link> }); return (
                 <div key={index} className="caixa">
                     <div className="days" >{ref.weekday} - {ref.date}</div>
                     <div className='Hours'>{ren}</div>
@@ -33,20 +29,8 @@ export default function Sessoes() {
 
             )
         }))
-        console.log(renderiza)
-
+   
     }
-
-    console.log(pullsession.days)
-
-
-    if (pullsession.length !== 0) {
-
-    }
-
-
-
-console.log(pullsession)
 
     return (
 
@@ -62,15 +46,9 @@ console.log(pullsession)
                     {renderiza}
                 </div>
 
-                <MovieSelected title={pullsession.title} img={pullsession.posterURL} hora={""} dia ={""}/>
+                <MovieSelected title={pullsession.title} img={pullsession.posterURL} hora={""} dia={""} />
             </>
 
-
-
-
-
-
     )
-
 
 }

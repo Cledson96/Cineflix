@@ -1,5 +1,4 @@
 import './Assentos.css';
-
 import { Link } from "react-router-dom"
 import axios from 'axios';
 import { useParams } from 'react-router-dom'
@@ -7,49 +6,36 @@ import { useState, useEffect } from 'react';
 import Tittle from '../Tittle/Tittle'
 import MovieSelected from '../MovieSelected/MovieSelected';
 
-
-export default function Assentos({ envio, setenvio, setselecionados, selecionados }) {
+export default function Assentos({ setpagina, pullassents, setpullassents, envio, setenvio, setselecionados, selecionados }) {
+    
     const params = useParams();
-    const [pullassents, setpullassents] = useState([]);
     const [renderiza, setrenderiza] = useState([]);
     const [cpf, setcpf] = useState("");
     const [nome, setnome] = useState("");
     const [Ids, setIds] = useState([]);
     const [ID, setID] = useState([]);
     const [compradores, setcompradores] = useState([]);
-
     const [referencia, setreferencia] = useState([]);
-    console.log(nome, cpf);
-    console.log(selecionados)
+    
 
     useEffect(() => {
-        console.log(referencia);
-    }, [referencia]);
-
-    useEffect(() => {
+        
         const request = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${params.IDassentos}/seats`);
-
         request.then((answer) => { setpullassents(pullassents[0] = (answer.data)); add() })
-    }, []);
+    }, [params.IDassentos]);
 
 
     function Modifica(refe) {
 
-        console.log(Ids)
-        console.log(selecionados)
-        console.log(referencia)
-        console.log(refe.target)
+
         if (Ids.indexOf(pullassents[0].seats[(refe.target.innerHTML - 1)].id) !== -1) {
             if (window.confirm("Tem certeza que deseja desmarcar o assento?")) {
                 let myindex = Ids.indexOf(pullassents[0].seats[(refe.target.innerHTML - 1)].id);
                 Ids.splice(myindex, 1);
                 selecionados.splice(myindex, 1)
-                compradores.splice(myindex,1)
-                console.log(compradores)
+                compradores.splice(myindex, 1)
                 setnome("")
                 setcpf("0")
-                console.log(selecionados)
-                console.log(Ids)
                 refe.target.parentNode.classList.add("Disponivel");
                 refe.target.parentNode.classList.remove("selecionado");
                 referencia.shift();
@@ -64,17 +50,9 @@ export default function Assentos({ envio, setenvio, setselecionados, selecionado
             } else {
                 Ids.push((pullassents[0].seats[(refe.target.innerHTML - 1)].id));
                 ID.push(pullassents[0].seats[(refe.target.innerHTML - 1)].name);
-                console.log(ID);
-                console.log(selecionados)
-                
-                console.log(compradores)
                 refe.target.parentNode.classList.add("selecionado");
                 refe.target.parentNode.classList.remove("Disponivel");
                 referencia.push(true)
-                console.log(referencia)
-                console.log(compradores)
-
-
             }
 
         }
@@ -83,12 +61,10 @@ export default function Assentos({ envio, setenvio, setselecionados, selecionado
     function add() {
 
 
-        console.log(pullassents[0])
-
         setrenderiza(renderiza[0] = pullassents[0].seats.map((ref, index) => {
             if (ref.isAvailable === false) {
                 return (
-                    <li className="Disponivel" key={index} >
+                    <li key={index} className="Disponivel"  >
 
                         <h2 onClick={Modifica}> {ref.name} </h2>
 
@@ -96,7 +72,7 @@ export default function Assentos({ envio, setenvio, setselecionados, selecionado
                 )
             } else {
                 return (
-                    <li onClick={() => { alert("Esse assento não está disponível!!") }} className="Indisponivel" key={index} >
+                    <li key={index} onClick={() => { alert("Esse assento não está disponível!!") }} className="Indisponivel"  >
 
                         <h2> {ref.name} </h2>
 
@@ -109,7 +85,7 @@ export default function Assentos({ envio, setenvio, setselecionados, selecionado
         )
     }
     function Reserva(refe) {
-        console.log(compradores)
+
         if (refe === "botao") {
             if (nome === "" || cpf === "") {
                 alert("Obrigatório digitar nome e cpf!!!")
@@ -117,37 +93,19 @@ export default function Assentos({ envio, setenvio, setselecionados, selecionado
 
                 alert("Obrigatório selecionar outro assento!")
             } else {
-                console.log(Ids)
                 referencia.shift();
-                console.log(selecionados)
                 let news = selecionados
-                compradores.push({ idAssento: (Ids[Ids.length -1]), nome: (nome), cpf: (cpf) })
-                news.push(<li> Nome:{nome} ,CPF: {cpf} ,Assento: {ID[ID.length - 1]}</li>)
-                console.log(compradores)
+                compradores.push({ idAssento: (Ids[Ids.length - 1]), nome: (nome), cpf: (cpf) })
+                news.push(<li> Nome:{nome}--CPF: {cpf} -- Assento: {ID[ID.length - 1]}</li>)
                 setselecionados(news)
                 setnome("")
                 setcpf("")
-                console.log(Ids)
-                console.log(selecionados)
-
-
-
-
             }
-
-        } else {
-
-            console.log(selecionados)
-            console.log(refe.target.innerHTML)
         }
-
-
-
-
 
     }
 
-    console.log(selecionados)
+
     return (
         pullassents.length === 0 ?
             <>
@@ -190,13 +148,21 @@ export default function Assentos({ envio, setenvio, setselecionados, selecionado
                         {selecionados}
                     </ul>
                     <button className='reserva' onClick={() => Reserva("botao")}>Reservar assento(s)</button>
-                    <Link to={"/sucesso"} > <button onClick={() => setenvio({ ids: Ids, compradores: compradores })} className='buttonReserva'>Concluir Venda</button></Link>
+                    <Botao setpagina={setpagina} IDassentos={params.IDassentos} selecionados={selecionados} setenvio={setenvio} Ids={Ids} compradores={compradores} />
 
                 </div>
+
 
                 <MovieSelected title={pullassents.movie.title} img={pullassents.movie.posterURL} horario={pullassents.name} dia={pullassents.day.weekday + "  -"} />
             </>
     )
-
+}
+function Botao({ setpagina, selecionados, setenvio, Ids, compradores ,IDassentos}) {
+    return (
+        selecionados.length === 0 ?
+            <h1></h1>
+            :
+            <Link to={"/sucesso"} > <button onClick={() => {setenvio({ ids: Ids, compradores: compradores });setpagina([`assentos/${IDassentos}`])}} className='buttonReserva'>Concluir Venda</button></Link>
+    )
 }
 
