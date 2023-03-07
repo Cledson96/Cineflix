@@ -32,6 +32,9 @@ Project carried out as an activity in the Driven Fullstack Developer course, put
 3. Install dependencies: `npm install`
 4. Run the project: `npm start`
 
+### Deploy
+`https://cineflix-one.vercel.app/`
+
 ## Como contribuir
 ### Português
 Você pode contribuir para este projeto de várias formas, como:
