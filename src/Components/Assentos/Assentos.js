@@ -62,7 +62,7 @@ export default function Assentos({ setpagina, pullassents, setpullassents, envio
 
 
         setrenderiza(renderiza[0] = pullassents[0].seats.map((ref, index) => {
-            if (ref.isAvailable === false) {
+            if (ref.isAvailable === true) {
                 return (
                     <li key={index} className="Disponivel"  >
 
